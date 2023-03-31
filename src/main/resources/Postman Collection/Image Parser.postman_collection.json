@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "a60067d1-5bf1-4a83-94b8-b3437d7ba103",
+		"name": "Image Parser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13496331"
+	},
+	"item": [
+		{
+			"name": "Upload CSV",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "file",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/raviranjan/Downloads/1672815113084-GraduateDev_AssessmentCsv_Ref003.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/api/image/upload?file",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"api",
+						"image",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Based on Name and Surname",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/api/image/Enviro365/IT Solutions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"api",
+						"image",
+						"Enviro365",
+						"IT Solutions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
