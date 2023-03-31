@@ -18,11 +18,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import static com.eviro.assessment.grad001.chenna.constants.ApplicationConstant.FILE_BASE_PATH;
+
 @RestController
 @RequestMapping("/v1/api/image")
 public class ImageController {
 
-    private String fileBasePath= "/Users/raviranjan/Downloads/Upload/";
+
 
     @Autowired
     private AccountProfileService accountProfileService;
@@ -38,9 +40,9 @@ public class ImageController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity uploadToFileSystem(@RequestParam("file") MultipartFile inputFile) {
+    public ResponseEntity<String> uploadToFileSystem(@RequestParam("file") MultipartFile inputFile) {
         String fileName = StringUtils.cleanPath(inputFile.getOriginalFilename());
-        Path path = Paths.get(fileBasePath + fileName);
+        Path path = Paths.get(FILE_BASE_PATH + fileName);
         try {
             Files.copy(inputFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
@@ -55,7 +57,7 @@ public class ImageController {
     @ResponseBody
     public FileSystemResource downloadFile(@PathVariable String filename){
         try {
-            String path = fileBasePath + filename; //path of your file
+            String path = FILE_BASE_PATH + filename; //path of your file
             return new FileSystemResource(new File(path));
         } catch (Exception e) {
             e.printStackTrace();

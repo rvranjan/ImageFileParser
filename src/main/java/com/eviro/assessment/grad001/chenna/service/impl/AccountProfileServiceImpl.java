@@ -14,10 +14,10 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.Base64;
 
+import static com.eviro.assessment.grad001.chenna.constants.ApplicationConstant.FILE_BASE_PATH;
+
 @Service
 public class AccountProfileServiceImpl implements AccountProfileService {
-
-    private String fileBasePath= "/Users/raviranjan/Downloads/Upload/";
 
     @Autowired
     private FileParser fileParser;
@@ -68,7 +68,7 @@ public class AccountProfileServiceImpl implements AccountProfileService {
 
     private File convertCSVDataToImage(String base64ImageData, String fileName, String extension) {
         byte[] data= Base64.getDecoder().decode(base64ImageData);
-        File outputFile= new File(fileBasePath+fileName+"."+extension);
+        File outputFile= new File(FILE_BASE_PATH +fileName+"."+extension);
         try(OutputStream stream= Files.newOutputStream(outputFile.toPath())){
             stream.write(data);
         } catch (IOException e) {
